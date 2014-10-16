@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tatty</title>
+    <style>
+        body {
+            background: black;
+        }
+        #tty {
+            background: black;
+            color: #ccc;
+
+            font-family: 'PC Senior';
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: -1px;
+        }
+
+        #tty .cursor {
+            border-left: 1px solid #888;
+        }
+
+        #tty .scan {
+            color: #000;
+            opacity: .2;
+        }
+
+    }
+    </style>
+</head>
+<body>
+    <div id="tty"></div>
+
+    <script src="./dist/common/traceur-runtime.js"></script>
+    <script src="./dist/common/es6-module-loader.js"></script>
+    <script src="./dist/common/system.js"></script>
+    <script src="./dist/index.js"></script>
+
+    <script>
+        System.import( 'index' )
+            .then( function( module ) {
+                console.log( 'Bootstrapped' );
+                var Tatty = module.default;
+            });
+    </script>
+</body>
+</html>
