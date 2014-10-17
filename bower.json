@@ -26,6 +26,7 @@
     "index.html"
   ],
   "dependencies": {
-    "tatty-screen": "git://github.com/mattstyles/tatty-screen.git#develop"
+    "tatty-screen": "~1.3.0",
+    "tatty-screen-base-module": "~1.0.1"
   }
 }
