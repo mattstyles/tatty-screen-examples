@@ -1,8 +1,9 @@
 
-import baseModule from './vendor/tatty-screen-base-module/index';
+import BaseModule from './vendor/tatty-screen-base-module/index';
+import ScanModule from './vendor/tatty-screen-scanlines/index';
 import Screen from './vendor/tatty-screen/src/index';
 
-class PrintModule extends baseModule {
+class PrintModule extends BaseModule {
     constructor( name='printModule' ) {
         this.name = name;
     }
@@ -26,7 +27,8 @@ window.tty = new Screen( document.querySelector( '#tty' ), {
     rows: 24,
     scan: false
 }, [
-    new PrintModule( 'printf' )
+    new PrintModule( 'printf' ),
+    new ScanModule( 'scanModule' )
 ]);
 
 tty.writeln( 'hello world' );
