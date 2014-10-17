@@ -1,7 +1,7 @@
 {
-  "name": "tatty-screen-base-module",
+  "name": "tatty-screen-examples",
   "version": "1.0.0",
-  "description": "Base module for tatty-screen",
+  "description": "Examples for using tatty-screen",
   "main": "dist/index.js",
   "scripts": {
     "watch": "./build/watch.js",
@@ -15,15 +15,14 @@
     "printer",
     "tty",
     "teleprinter",
-    "module",
-    "base"
+    "examples"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mattstyles/tatty-screen-base-module"
+    "url": "https://github.com/mattstyles/tatty-screen-examples"
   },
   "bugs": {
-    "url": "https://github.com/mattstyles/tatty-screen-base-module/issues"
+    "url": "https://github.com/mattstyles/tatty-screen-examples/issues"
   },
   "license": "WTFPL",
   "devDependencies": {
