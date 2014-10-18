@@ -28,7 +28,7 @@ window.tty = new Screen( document.querySelector( '#tty' ), {
     scanOffset: 2
 }, [
     new PrintModule( 'printf' ),
-    new ScanModule( 'scanModule' )
+    new ScanModule( 'scanModule', document.body )
 ]);
 
 tty.writeln( 'I ❤︎ Harmony' );
