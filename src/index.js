@@ -25,20 +25,10 @@ class PrintModule extends BaseModule {
 window.tty = new Screen( document.querySelector( '#tty' ), {
     cols: 40,
     rows: 24,
-    scan: false
+    scanOffset: 2
 }, [
     new PrintModule( 'printf' ),
     new ScanModule( 'scanModule' )
 ]);
 
-tty.writeln( 'hello world' );
-
-// import Screen from './vendor/tatty-screen/tatty-screen';
-//
-// window.tty = new Screen( document.querySelector( '#tty' ), {
-//     cols: 30,
-//     rows: 20
-// });
-//
-// tty.writeln( 'This is Harmony' );
-// tty.prompt();
+tty.writeln( 'I ❤︎ Harmony' );
