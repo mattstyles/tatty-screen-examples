@@ -51,7 +51,7 @@ prompt.on( 'delete', function() {
 prompt.on( 'navigate', function( code ) {
     // left
     if ( code === 37 ) {
-        if ( screen.cursor.x <= 2 ) {
+        if ( screen.cursor.x <= 3 ) {
             return;
         }
         screen.setCursor( screen.cursor.x - 1, screen.cursor.y );
