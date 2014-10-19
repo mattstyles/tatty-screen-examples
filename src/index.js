@@ -1,5 +1,6 @@
 import BaseModule from './vendor/tatty-screen-base-module/index';
 import ScanModule from './vendor/tatty-screen-scanlines/index';
+import PrintModule from './vendor/tatty-screen-printer/index';
 import Screen from './vendor/tatty-screen/src/index';
 import Prompt from './vendor/tatty-prompt/index';
 
@@ -9,9 +10,11 @@ var focussed = false;
 var screen = new Screen( tty, {
     cols: 40,
     rows: 24,
-    scanOffset: 2
+    scanOffset: 2,
+    printDelay: 50
 }, [
-    new ScanModule( 'scanModule', document.body )
+    new ScanModule( 'scanModule', document.body ),
+    new PrintModule( 'printModule' )
 ]);
 
 var prompt = new Prompt( tty );
@@ -72,6 +75,39 @@ prompt.on( 'navigate', function( code ) {
 
 screen.writeln( 'I ❤︎ Harmony' );
 screen.prompt();
+screen.write( 'syslog' );
+
+var output = [
+    '===============',
+    'SYSTEM PRINTING',
+    '===============',
+    '    ',
+    'OP 1: OPERATIONAL',
+    'OP 2: OPERATIONAL',
+    'OP 3: MALFUNCTION',
+    '    ',
+    'TAKE IMMEDIATE ACTION'
+];
+
+var index = 0;
+var print = function() {
+    screen.writeln();
+    screen.print( output[ index ] );
+}
+
+screen.on( 'print:complete', function() {
+    index++;
+
+    if ( index >= output.length ) {
+        screen.off( 'print:complete' );
+        screen.prompt();
+        return;
+    }
+
+    print();
+});
+
+print();
 
 
 
