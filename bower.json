@@ -27,8 +27,10 @@
   ],
   "private": true,
   "dependencies": {
-    "tatty-screen": "~1.3.0",
+    "tatty-screen": "~1.4.0",
     "tatty-screen-base-module": "~1.0.1",
-    "tatty-screen-scanlines": "~0.1.0"
+    "tatty-screen-scanlines": "~0.2.0",
+    "tatty-screen-printer": "~0.1.1",
+    "tatty-prompt": "~0.1.0"
   }
 }
