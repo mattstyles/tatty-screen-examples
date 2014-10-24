@@ -73,9 +73,9 @@ prompt.on( 'navigate', function( code ) {
 
 
 
-screen.writeln( 'I ❤︎ Harmony' );
-screen.prompt();
-screen.write( 'syslog' );
+// screen.writeln( 'I ❤︎ Harmony' );
+// screen.prompt();
+// screen.write( 'syslog' );
 
 var output = [
     '===============',
@@ -114,6 +114,7 @@ prompt.on( 'input', onExecute );
 prompt.on( 'execute', onExecute );
 
 function onExecute( char ) {
+    screen.deleteln();
     print();
 };
 
@@ -144,6 +145,12 @@ print();
 // screen.setCursor( 10, 2 );
 // screen.emit( 'prompt', true );
 // screen.write( 'Q' );
+
+
+// screen.writeln( 'hello' );
+// screen.writeln( 'world' );
+// screen.deleteln();
+// screen.emit( 'prompt', true );
 
 
 window.scr = screen;
