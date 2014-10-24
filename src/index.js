@@ -32,20 +32,20 @@ tty.addEventListener( 'click', function() {
     screen.emit( 'prompt', true);
 });
 
-prompt.on( 'input', function( char ) {
-    screen.write( char );
-    screen.emit( 'prompt', true );
-});
+// prompt.on( 'input', function( char ) {
+//     screen.write( char );
+//     screen.emit( 'prompt', true );
+// });
 
 prompt.on( 'focus', function( flag ) {
     screen.emit( 'showCursor', flag );
 });
 
-prompt.on( 'execute', function( cmd ) {
-    console.log( 'command:', cmd );
-    screen.writeln( 'SYSTEM DOWN' );
-    screen.prompt();
-});
+// prompt.on( 'execute', function( cmd ) {
+//     console.log( 'command:', cmd );
+//     screen.writeln( 'SYSTEM DOWN' );
+//     screen.prompt();
+// });
 
 prompt.on( 'delete', function() {
     screen.del();
@@ -95,20 +95,55 @@ var print = function() {
     screen.print( output[ index ] );
 }
 
-screen.on( 'print:complete', function() {
+screen.on( 'print:complete', function printing() {
     index++;
 
     if ( index >= output.length ) {
-        screen.off( 'print:complete' );
+        screen.off( 'print:complete', printing );
+        prompt.off( 'input', onExecute );
+        prompt.off( 'execute', onExecute );
+
         screen.prompt();
         return;
     }
 
-    print();
+    screen.writeln( '<CONTINUE>' );
 });
+
+prompt.on( 'input', onExecute );
+prompt.on( 'execute', onExecute );
+
+function onExecute( char ) {
+    print();
+};
 
 print();
 
+
+// screen.writeln( 'This will cost more than that' );
+// screen.setCursor( 5, 0 );
+// screen.emit( 'prompt', true );
+// screen.write( 'sure ' );
+// screen.emit( 'prompt', true );
+//
+// screen.writeln();
+//
+// screen.writeln( 'This will cost more than that' );
+// screen.setCursor( 5, 2 );
+// screen.emit( 'prompt', true );
+// screen.write( '<co> ' );
+// screen.emit( 'prompt', true );
+//
+// screen.writeln();
+//
+// for ( var i = 0; i < screen.lines.length; i++ ) {
+//     var len = screen.lines[ i ].childNodes.length ? screen.lines[ i ].childNodes[ 0 ].length : 0;
+//     console.log( screen.lines[ i ].innerHTML.length, len );
+// }
+//
+// screen.setCursor( 10, 2 );
+// screen.emit( 'prompt', true );
+// screen.write( 'Q' );
 
 
 window.scr = screen;
